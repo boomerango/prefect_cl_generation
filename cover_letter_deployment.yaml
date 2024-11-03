@@ -1,0 +1,68 @@
+###
+### A complete description of a Prefect Deployment for flow 'Cover Letter Generator'
+###
+name: Cover Letter Generator Deployment
+description: Generates cover letter from job posting URL and CV
+version: 897e273d588ac72c2365c581e1ccfdd7
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: default-agent-pool
+tags:
+- cover-letter
+parameters: {}
+schedule: null
+schedules: []
+is_schedule_active: null
+infra_overrides: {}
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: Cover Letter Generator
+manifest_path: null
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  _block_document_id: feb36e15-61bb-415f-879e-4d4573732935
+  _block_document_name: anonymous-ab06b336-80b7-4430-9f42-7572abb31684
+  _is_anonymous: true
+  block_type_slug: process
+  _block_type_slug: process
+storage:
+  basepath: /Users/artempoddiieniezhnyi/coding/DATASCIENNCE/prefect_automatons/storage
+  _block_document_id: 33c6a37d-94c3-4bc2-8e15-9ccf390aa2c6
+  _block_document_name: code-storage
+  _is_anonymous: false
+  block_type_slug: local-file-system
+  _block_type_slug: local-file-system
+path: ''
+entrypoint: cv_parser.py:cover_letter_workflow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    job_urls_text:
+      position: 0
+      title: job_urls_text
+      type: string
+    cv_path:
+      default: ./cv.pdf
+      position: 1
+      title: cv_path
+      type: string
+    pattern:
+      default: https?://djinni\.co/jobs/\d+[^\s\n]+
+      position: 2
+      title: pattern
+      type: string
+  required:
+  - job_urls_text
+  definitions: null
+timestamp: '2024-11-01T18:54:27.718499+00:00'
+triggers: []
+enforce_parameter_schema: null
